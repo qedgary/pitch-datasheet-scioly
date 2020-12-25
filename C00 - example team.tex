@@ -14,9 +14,13 @@
 
 \setmainfont[Ligatures=TeX]{Segoe UI}
 \setmathfont(Digits,Latin,Greek){Segoe UI}
+\renewcommand{\sharp}{\text{\fontspec{Segoe UI Symbol}♯}}
+\renewcommand{\flat}{\text{\fontspec{Segoe UI Symbol}♭}}
+
 \usepgfplotslibrary{polar}
 
-\makeatletter % copied from TeX StackExchange
+% copied from TeX StackExchange - https://tex.stackexchange.com/questions/99770/problem-with-digits-in-urls-when-using-mathspec-and-hyperref
+\makeatletter 
   \DeclareMathSymbol{0}{\mathalpha}{\eu@DigitsArabic@symfont}{`0}
   \DeclareMathSymbol{1}{\mathalpha}{\eu@DigitsArabic@symfont}{`1}
   \DeclareMathSymbol{2}{\mathalpha}{\eu@DigitsArabic@symfont}{`2}
@@ -28,6 +32,7 @@
   \DeclareMathSymbol{8}{\mathalpha}{\eu@DigitsArabic@symfont}{`8}
   \DeclareMathSymbol{9}{\mathalpha}{\eu@DigitsArabic@symfont}{`9}
 \makeatother
+% end section copied from TeX StackExchange
 
 \titleformat{\section}
 {\Large\bfseries\color{blue}}
@@ -42,8 +47,7 @@
 \setlength\dashlinegap{2.5pt}
 \setlength\arrayrulewidth{1pt}
 \setlength\columnsep{23.8ex}
-\renewcommand{\sharp}{\text{\fontspec{Segoe UI Symbol}♯}}
-\renewcommand{\flat}{\text{\fontspec{Segoe UI Symbol}♭}}
+
 \setlength{\arrayrulewidth}{1pt}
 \def\arraystretch{1.2}
 
@@ -67,61 +71,11 @@
 
 \def\feedback{No comments :)}
 
-\def\noteOne{A$_3$}
-\def\noteTwo{B$_3$}
-\def\noteThree{C\sharp$_4$}
-\def\noteFour{D$_4$}
-\def\noteFive{E$_5$}
-\def\noteSix{F\sharp$_5$}
-\def\noteSeven{G\sharp$_5$}
-\def\noteEight{A$_5$}
-\def\noteBonus{A$_6$}
+% copy-and-paste the output from Java between these hyphens: 
+% ----------------------------------------------------------
 
-\def\noteOneTarget{220.00 Hz}
-\def\noteTwoTarget{246.94 Hz}
-\def\noteThreeTarget{277.18 Hz}
-\def\noteFourTarget{293.66 Hz}
-\def\noteFiveTarget{659.26 Hz}
-\def\noteSixTarget{739.99 Hz}
-\def\noteSevenTarget{830.61 Hz}
-\def\noteEightTarget{880.00 Hz}
-\def\noteBonusTarget{1760.00}
+% ----------------------------------------------------------
 
-\def\noteOneActual{440.00 Hz}
-\def\noteTwoActual{246.10 Hz}
-\def\noteThreeActual{276.30 Hz}
-\def\noteFourActual{293.12 Hz}
-\def\noteFiveActual{609.10 Hz}
-\def\noteSixActual{730.20 Hz}
-\def\noteSevenActual{835.12 Hz}
-\def\noteEightActual{1848.19 Hz}
-\def\noteBonusActual{skipped}
-
-\def\noteOneCents{1200.0 cents off}
-\def\noteTwoCents{$-$5.9 cents off}
-\def\noteThreeCents{$-$5.5 cents off}
-\def\noteFourCents{$-$3.2 cents off}
-\def\noteFiveCents{$-$137.0 cents off}
-\def\noteSixCents{$-$23.1 cents off}
-\def\noteSevenCents{9.4 cents off}
-\def\noteEightCents{1284.6 cents off}
-\def\noteBonusCents{skipped}
-
-\def\graphOne{(0.0,5.999999999999999)}
-\def\graphTwo{(40.0,1.9408936085536286)}
-\def\graphThree{(80.0,1.9447844608056115)}
-\def\graphFour{(120.0,1.9680390752289572)}
-\def\graphFive{(160.0,0.8150534840299111)}
-\def\graphSix{(200.0,1.769457740274325)}
-\def\graphSeven{(240.0,2.0938252855296215)}
-\def\graphEight{(280.0,6.035288327927946)}
-\def\graphBonus{}
-
-\def\setMaximum{ymax = 6}
-
-\def\pitchScore{21.8473}
-\def\audacityEstimate{21.8473}
-\def\pasciolyEstimate{21.8473}
 
 
 
