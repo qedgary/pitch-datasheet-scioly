@@ -1,0 +1,311 @@
+% !TeX program = XeLaTeX
+\documentclass[12pt,letterpaper]{article}
+\PassOptionsToPackage{table}{xcolor}
+\usepackage{amsmath,pgfplots,multicol,geometry,multirow,calc,arydshln,titlesec}
+\usepackage{mathspec}
+\usepackage{hyperref}
+\hypersetup{
+ pdftitle={Sounds of Music instrument testing 2020-21 - Duke University Science Olympiad},
+ pdfnewwindow=true,
+ colorlinks=true,
+ linkcolor=blue,
+ urlcolor=blue
+}
+
+\setmainfont[Ligatures=TeX]{Segoe UI}
+\setmathfont(Digits,Latin,Greek){Segoe UI}
+\usepgfplotslibrary{polar}
+
+\makeatletter % copied from TeX StackExchange
+  \DeclareMathSymbol{0}{\mathalpha}{\eu@DigitsArabic@symfont}{`0}
+  \DeclareMathSymbol{1}{\mathalpha}{\eu@DigitsArabic@symfont}{`1}
+  \DeclareMathSymbol{2}{\mathalpha}{\eu@DigitsArabic@symfont}{`2}
+  \DeclareMathSymbol{3}{\mathalpha}{\eu@DigitsArabic@symfont}{`3}
+  \DeclareMathSymbol{4}{\mathalpha}{\eu@DigitsArabic@symfont}{`4}
+  \DeclareMathSymbol{5}{\mathalpha}{\eu@DigitsArabic@symfont}{`5}
+  \DeclareMathSymbol{6}{\mathalpha}{\eu@DigitsArabic@symfont}{`6}
+  \DeclareMathSymbol{7}{\mathalpha}{\eu@DigitsArabic@symfont}{`7}
+  \DeclareMathSymbol{8}{\mathalpha}{\eu@DigitsArabic@symfont}{`8}
+  \DeclareMathSymbol{9}{\mathalpha}{\eu@DigitsArabic@symfont}{`9}
+\makeatother
+
+\titleformat{\section}
+{\Large\bfseries\color{blue}}
+{}
+{0cm}
+{\vspace{-.9em}}
+
+\geometry{top = 7mm, bottom = 5mm, left = 1cm, right = 1cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+\setlength\dashlinedash{1pt}
+\setlength\dashlinegap{2.5pt}
+\setlength\arrayrulewidth{1pt}
+\setlength\columnsep{23.8ex}
+\renewcommand{\sharp}{\text{\fontspec{Segoe UI Symbol}♯}}
+\renewcommand{\flat}{\text{\fontspec{Segoe UI Symbol}♭}}
+\setlength{\arrayrulewidth}{1pt}
+\def\arraystretch{1.2}
+
+%\definecolor{dusoblue}{RGB}{27,34,84}
+\definecolor{carsoblue}{RGB}{0,175,255}
+\colorlet{hyblue}{blue!50!carsoblue}
+
+\pagestyle{empty}
+
+\def\logOne{2}   % List of materials in device
+\def\logTwo{2}   % Data on pitch accuracy vs. design change
+\def\logThree{2} % Includes at least five data points
+\def\logFour{0}  % Proper labeling of title, name, units
+\def\logFive{1}  % Labeled device picture or diagram 
+
+\def\songRhythm{0}
+\def\songPitch{2}
+\def\songTime{skipped}
+
+\def\totalScore{50} % you should fill this out manually, by adding the value of the 
+
+\def\feedback{No comments :)}
+
+\def\noteOne{A$_3$}
+\def\noteTwo{B$_3$}
+\def\noteThree{C\sharp$_4$}
+\def\noteFour{D$_4$}
+\def\noteFive{E$_5$}
+\def\noteSix{F\sharp$_5$}
+\def\noteSeven{G\sharp$_5$}
+\def\noteEight{A$_5$}
+\def\noteBonus{A$_6$}
+
+\def\noteOneTarget{220.00 Hz}
+\def\noteTwoTarget{246.94 Hz}
+\def\noteThreeTarget{277.18 Hz}
+\def\noteFourTarget{293.66 Hz}
+\def\noteFiveTarget{659.26 Hz}
+\def\noteSixTarget{739.99 Hz}
+\def\noteSevenTarget{830.61 Hz}
+\def\noteEightTarget{880.00 Hz}
+\def\noteBonusTarget{1760.00}
+
+\def\noteOneActual{440.00 Hz}
+\def\noteTwoActual{246.10 Hz}
+\def\noteThreeActual{276.30 Hz}
+\def\noteFourActual{293.12 Hz}
+\def\noteFiveActual{609.10 Hz}
+\def\noteSixActual{730.20 Hz}
+\def\noteSevenActual{835.12 Hz}
+\def\noteEightActual{1848.19 Hz}
+\def\noteBonusActual{skipped}
+
+\def\noteOneCents{1200.0 cents off}
+\def\noteTwoCents{$-$5.9 cents off}
+\def\noteThreeCents{$-$5.5 cents off}
+\def\noteFourCents{$-$3.2 cents off}
+\def\noteFiveCents{$-$137.0 cents off}
+\def\noteSixCents{$-$23.1 cents off}
+\def\noteSevenCents{9.4 cents off}
+\def\noteEightCents{1284.6 cents off}
+\def\noteBonusCents{skipped}
+
+\def\graphOne{(0.0,5.999999999999999)}
+\def\graphTwo{(40.0,1.9408936085536286)}
+\def\graphThree{(80.0,1.9447844608056115)}
+\def\graphFour{(120.0,1.9680390752289572)}
+\def\graphFive{(160.0,0.8150534840299111)}
+\def\graphSix{(200.0,1.769457740274325)}
+\def\graphSeven{(240.0,2.0938252855296215)}
+\def\graphEight{(280.0,6.035288327927946)}
+\def\graphBonus{}
+
+\def\setMaximum{ymax = 6}
+
+\def\pitchScore{21.8473}
+\def\audacityEstimate{21.8473}
+\def\pasciolyEstimate{21.8473}
+
+
+
+
+
+
+
+\begin{document}
+{\color{blue}\rule{7cm}{6pt}
+
+{\bfseries\huge Example X. Ampleson Early College High School for Science and Technology}}
+
+Duke University Science Olympiad 2020-21\\Sounds of Music checklist and data sheet
+
+\section{Pitch score and bonus note}
+The pitch profile graph below illustrates the difference between the target pitch (shown in black) and your actual pitch (shown in blue). Lower pitches are located close to the center, while higher pitches are located further away. The better your pitch score, the more the shaded blue area resembles a circle around the black dots. If a blue dot is missing, it means the pitch was skipped or impossible for me to score.
+
+\begin{minipage}[b][][t]{95mm}
+\begin{tikzpicture}
+\begin{polaraxis}[
+  title = {\bfseries\large%\color{blue}%
+  Instrument pitch profile\raisebox{-4mm}{}},
+  width = 95mm,
+  xtick = {0,40,80,120,160,200,240,280,320},
+  yticklabels={,,},
+  xticklabels={\noteOne,\noteTwo,\noteThree,\noteFour,\noteFive,\noteSix, \noteSeven,\noteEight,Bonus note},
+  legend style={at={(0.5,-0.1)},anchor=north},
+  \setMaximum
+]
+\addplot[only marks, line width = 1.5 pt] coordinates { % reference points
+(0,2)
+(40,2)
+(80,2)
+(120,2)
+(160,2)
+(200,2)
+(240,2)
+(280,2)
+(320,2)
+};
+\addplot[mark=*, mark options={fill = hyblue, opacity=1},draw=hyblue,line width = 1.5pt,fill=hyblue, fill opacity = 0.2] coordinates { % student's data points
+\graphOne
+\graphTwo
+\graphThree
+\graphFour
+\graphFive
+\graphSix
+\graphSeven
+\graphEight
+\graphBonus
+} -- cycle ;
+\legend{\makebox[6.3em][l]{Target pitches},\makebox[6.3em][l]{Your pitches}}
+\end{polaraxis}
+\end{tikzpicture}
+\end{minipage}%
+\hspace{5mm}{\begin{minipage}[b][][t]{\textwidth - 10cm}
+\begin{flushright}
+
+
+\begin{tabular}{ccc}
+%\color{blue}
+\textbf{Note} &
+%\color{blue}
+\textbf{Target frequency} &
+%\color{blue}
+\textbf{Actual frequency}\\
+\hline
+\multirow{2}{*}{\noteOne} & \noteOneTarget & \noteOneActual \\
+& \multicolumn{2}{c}{\bfseries\cellcolor{hyblue!20}\noteOneCents}\\
+\hdashline
+\multirow{2}{*}{\noteTwo} & \noteTwoTarget & \noteTwoActual\\
+& \multicolumn{2}{c}{\bfseries\cellcolor{hyblue!20}\noteTwoCents}\\
+\hdashline
+\multirow{2}{*}{\noteThree} & \noteThreeTarget & \noteThreeActual\\
+& \multicolumn{2}{c}{\bfseries\cellcolor{hyblue!20}\noteThreeCents}\\
+\hdashline
+\multirow{2}{*}{\noteFour} & \noteFourTarget & \noteFourActual\\
+& \multicolumn{2}{c}{\bfseries\cellcolor{hyblue!20}\noteFourCents}\\
+\hdashline
+\multirow{2}{*}{\noteFive} & \noteFiveTarget & \noteFiveActual\\
+& \multicolumn{2}{c}{\bfseries\cellcolor{hyblue!20}\noteFiveCents}\\
+\hdashline
+\multirow{2}{*}{\noteSix} & \noteSixTarget & \noteSixActual\\
+& \multicolumn{2}{c}{\bfseries\cellcolor{hyblue!20}\noteSixCents}\\
+\hdashline
+\multirow{2}{*}{\noteSeven} & \noteSevenTarget & \noteSevenActual\\
+& \multicolumn{2}{c}{\bfseries\cellcolor{hyblue!20}\noteSevenCents}\\
+\hdashline
+\multirow{2}{*}{\noteEight} & \noteEightTarget & \noteEightActual\\
+& \multicolumn{2}{c}{\bfseries\cellcolor{hyblue!20}\noteEightCents}\\
+\hline
+\multirow{2}{13mm}{\centering\noteBonus\\\footnotesize(\emph{bonus})} & \noteBonusTarget & \noteBonusActual\\
+& \multicolumn{2}{c}{\bfseries\cellcolor{hyblue!20}\noteBonusCents}\\
+\hline
+\end{tabular}
+
+\end{flushright}
+
+\end{minipage}}
+
+%\vspace{\fill}
+
+\begin{multicols}{2}
+\section{Log score}
+
+\begin{tabular}{lc}
+\textbf{Item} & \multicolumn{1}{p{16mm}}{\centering\textbf{Score}}\\
+\hline
+List of materials in device & \bfseries\cellcolor{hyblue!20}\logOne\\
+Data on pitch accuracy vs.\ design change & \bfseries\cellcolor{hyblue!20}\logTwo \\
+Includes at least five data points & \bfseries\cellcolor{hyblue!20}\logThree \\
+Proper labeling of title, name, units & \bfseries\cellcolor{hyblue!20}\logFour\\
+Labeled device picture or diagram & \bfseries\cellcolor{hyblue!20}\logFive \\
+\hline
+\end{tabular}
+
+\section{Song score}
+
+\begin{tabular}{lc}
+\textbf{Item} & \multicolumn{1}{p{16mm}}{\centering\textbf{Score}} \\
+\hline
+Rhythm & \bfseries\cellcolor{hyblue!20}\songRhythm \\
+Pitch  & \bfseries\cellcolor{hyblue!20}\songPitch  \\
+Time less than 15 seconds & \bfseries\cellcolor{hyblue!20}\songTime   \\
+\hline
+\end{tabular}
+\end{multicols}
+\vspace{-1cm}
+\hfill\makebox[26mm][l]{\includegraphics[height = 2cm]{duso_logo.pdf}}
+
+\newgeometry{top = 15mm, bottom = 1cm, left = 1in, right = 1in}
+
+\section{Score on each section}
+
+The sum of your pitch score and your bonus note score is \textbf{\pitchScore} out of 41. The sum of your pitch score, bonus, log score, and song score is \textbf{\totalScore} out of 60. Because the rules require your pitch score to equal the IPS sum divided by the team with the highest IPS sum multiplied by 36, the scores given here assume that at least one team has a perfect score.
+
+\section{Remarks}
+
+After I scored your instrument, I put your data into a computer program, which automatically generated this report. Obviously, generic reports aren't everybody's cup of tea, so here's my personalized feedback just for your instrument. %(Sometimes no feedback is good feedback, because it means you didn't do anything wrong. Or I got lazy lol. One of those two.)
+
+{\feedback}
+
+\section{How will your regional or state tournament be different?}
+
+The Duke University Science Olympiad Invitational, or DUSO, is an \emph{invitational} tournament, meaning that your ranking is for practice purposes only. However, your ranking at this tournament doesn't affect your team's chances at qualifying for your state tournament or the national tournament. Some teams wonder whether their performance would change under different conditions at the actual regional or state tournament.
+
+I measured the frequency of your pitch with a program named Praat using its default settings. Other tournaments may use different software to measure the frequency of the pitch of your instrument. Here are some estimates of how you would've done with other apps:
+\begin{itemize}
+\item The average frequency reading of a pitch on Audacity is $99.9\pm9.9$ cents higher than that on Praat. If rescored, you would have earned an estimated \textbf{\audacityEstimate} out of 41 on the pitch score and bonus. This assumes your event supervisor is following the recommendations set forth by the \href{https://docs.google.com/document/d/1VBmM2NzHvc5F2ZHKz4Warf_NGrkn1ADL1Gx0DPHVrJ4/edit#bookmark=id.lu1jk8vh7g7z}{BEARSO tournament guide} released by Southern California Science Olympiad.
+
+\item The average frequency reading of a pitch on \scalebox{1.1}{\texttt{pascioly.org/sounds}} is $99.9\pm9.9$ cents lower than that on Praat. Additionally, {\texttt{pascioly.org/sounds}} does intermediate rounding, which Praat does not. If rescored, you would have earned an estimated \textbf{\pasciolyEstimate} out of 41 on the pitch score and bonus.
+\end{itemize}
+These scores are estimates, and you may find something completely different when you measure using other software. Factors like background noise or Internet speed can also impact your score.
+
+Furthermore, I didn't include any penalties when evaluating your instrument. Some tournaments may enforce penalties for competition violations, construction violations, or unsafe operation. Examples include not knowing the note number of your instrument, using your own tuning app while you play the instrument, and several other violations listed in the 2020-21 Division C rule manual.
+
+%\parbox{\textwidth}{\setlength{\parindent}{0pt}
+%\setlength{\parskip}{8pt}
+\section{How did I score \emph{Twinkle Twinkle Little Star}?}
+
+Something that bothers me is how vague event supervisors can be when assigning points for the song score. So, I usually like to describe my personal way of evaluating each song objectively (or at least, as objectively as I possibly can). I used the same scoring criteria I used at last year's DUSO competition. You can find last year's instrument scoring criteria on page 17 of the PDF at the link below. 
+
+\url{https://scioly.org/tests/files/soundsofmusic_2020_c_duke-gz839918_key.pdf}
+%}
+
+\vfill
+\hfill\makebox[2cm][l]{\includegraphics{duso_logo.pdf}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
