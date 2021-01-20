@@ -169,10 +169,12 @@ public class datasheetGenerator{
       // score the instrument, as well as give estimates for the other programs
       double pitchScore = 0;
       double audacityEstimate = 0;
-      double pasciolyEstimate = 0;
+      double pasciolyEstimate = 0;        // one-time compressed
+      double pasciolyEstimateTripleC = 0; // three-times compressed
 
-      double meanErrorAudacity = 0; // mean error of Audacity from Praat, in cents
-      double meanErrorPAscioly = 0;
+      double meanErrorAudacity = -0.174856135652284; // mean error of Audacity from Praat, in cents
+      double meanErrorPAscioly = -4.155381354;
+      double meanErrorPAsciolyTripleC = -3.47874315393969;
 
       for (double centsOff : centsArray){
          if(centsOff != Double.MAX_VALUE){
@@ -187,13 +189,20 @@ public class datasheetGenerator{
       }
       for (double centsOff : centsArray){
          if(centsOff != Double.MAX_VALUE){
-            pasciolyEstimate += Note.getIPS(centsOff + meanErrorPAscioly, "invitational");
+            pasciolyEstimate += Note.getIPS(Math.round(centsOff + meanErrorPAscioly), "invitational");
+            // Math.round accounts for the fact that intermediate rounding is necessary for pascioly.org/sounds
+         }
+      }
+      for (double centsOff : centsArray){
+         if(centsOff != Double.MAX_VALUE){
+            pasciolyEstimateTripleC += Note.getIPS(Math.round(centsOff + meanErrorPAsciolyTripleC), "invitational");
          }
       }
 
       output += "\\def\\pitchScore{" + String.format("%.4f",pitchScore) + "}\n";
-      output += "\\def\\audacityEstimate{" + String.format("%.4f",audacityEstimate) + "}\n";
-      output += "\\def\\pasciolyEstimate{" + String.format("%.4f",pasciolyEstimate) + "}";
+      output += "\\def\\audacityEstimate{"   + String.format("%.4f",audacityEstimate       ) + "}\n";
+      output += "\\def\\pasciolyEstimate{"   + String.format("%.4f",pasciolyEstimate       ) + "}\n";
+      output += "\\def\\pasciolyEstimateTC{" + String.format("%.4f",pasciolyEstimateTripleC) + "}";
 
       System.out.println(output);
    }

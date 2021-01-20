@@ -67,7 +67,7 @@
 \def\songPitch{2}
 \def\songTime{skipped}
 
-\def\totalScore{50} % you should fill this out manually, by adding the value of the 
+\def\totalScore{50} % you should fill this out manually, by adding the value of the pitch score and bonus note to the log score and song score, which you should have filled in above
 
 \def\feedback{No comments :)}
 
@@ -75,8 +75,62 @@
 % ----------------------------------------------------------
 
 % ----------------------------------------------------------
+\def\noteOne{A$_3$}
+\def\noteTwo{B$_3$}
+\def\noteThree{C\sharp$_4$}
+\def\noteFour{D$_4$}
+\def\noteFive{E$_5$}
+\def\noteSix{F\sharp$_5$}
+\def\noteSeven{G\sharp$_5$}
+\def\noteEight{A$_5$}
+\def\noteBonus{A$_6$}
 
+\def\noteOneTarget{220.00 Hz}
+\def\noteTwoTarget{246.94 Hz}
+\def\noteThreeTarget{277.18 Hz}
+\def\noteFourTarget{293.66 Hz}
+\def\noteFiveTarget{659.26 Hz}
+\def\noteSixTarget{739.99 Hz}
+\def\noteSevenTarget{830.61 Hz}
+\def\noteEightTarget{880.00 Hz}
+\def\noteBonusTarget{1760.00}
 
+\def\noteOneActual{440.00 Hz}
+\def\noteTwoActual{246.10 Hz}
+\def\noteThreeActual{276.30 Hz}
+\def\noteFourActual{293.12 Hz}
+\def\noteFiveActual{609.10 Hz}
+\def\noteSixActual{730.20 Hz}
+\def\noteSevenActual{835.12 Hz}
+\def\noteEightActual{1848.19 Hz}
+\def\noteBonusActual{skipped}
+
+\def\noteOneCents{1200.0 cents off}
+\def\noteTwoCents{$-$5.9 cents off}
+\def\noteThreeCents{$-$5.5 cents off}
+\def\noteFourCents{$-$3.2 cents off}
+\def\noteFiveCents{$-$137.0 cents off}
+\def\noteSixCents{$-$23.1 cents off}
+\def\noteSevenCents{9.4 cents off}
+\def\noteEightCents{1284.6 cents off}
+\def\noteBonusCents{skipped}
+
+\def\graphOne{(0.0,5.999999999999999)}
+\def\graphTwo{(40.0,1.9408936085536286)}
+\def\graphThree{(80.0,1.9447844608056115)}
+\def\graphFour{(120.0,1.9680390752289572)}
+\def\graphFive{(160.0,0.8150534840299111)}
+\def\graphSix{(200.0,1.769457740274325)}
+\def\graphSeven{(240.0,2.0938252855296215)}
+\def\graphEight{(280.0,6.035288327927946)}
+\def\graphBonus{}
+
+\def\setMaximum{ymax = 6}
+
+\def\pitchScore{21.8473}
+\def\audacityEstimate{21.8473}
+\def\pasciolyEstimate{21.8473}
+\def\pasciolyEstimateTC{123}
 
 
 
@@ -224,9 +278,16 @@ The Duke University Science Olympiad Invitational, or DUSO, is an \emph{invitati
 
 I measured the frequency of your pitch with a program named Praat using its default settings. Other tournaments may use different software to measure the frequency of the pitch of your instrument. Here are some estimates of how you would've done with other apps:
 \begin{itemize}
-\item The average frequency reading of a pitch on Audacity is $99.9\pm9.9$ cents higher than that on Praat. If rescored, you would have earned an estimated \textbf{\audacityEstimate} out of 41 on the pitch score and bonus. This assumes your event supervisor is following the recommendations set forth by the \href{https://docs.google.com/document/d/1VBmM2NzHvc5F2ZHKz4Warf_NGrkn1ADL1Gx0DPHVrJ4/edit#bookmark=id.lu1jk8vh7g7z}{BEARSO tournament guide} released by Southern California Science Olympiad.
+\item The average frequency reading of a pitch on Audacity is $0.17\pm2.16
+$ cents lower than that on Praat. If rescored, you would have earned an estimated \textbf{\audacityEstimate} out of 41 on the pitch score and bonus. This assumes your event supervisor is following the recommendations set forth by the \href{https://docs.google.com/document/d/1VBmM2NzHvc5F2ZHKz4Warf_NGrkn1ADL1Gx0DPHVrJ4/edit#bookmark=id.lu1jk8vh7g7z}{BEARSO tournament guide} released by Southern California Science Olympiad.
 
-\item The average frequency reading of a pitch on \scalebox{1.1}{\texttt{pascioly.org/sounds}} is $99.9\pm9.9$ cents lower than that on Praat. Additionally, {\texttt{pascioly.org/sounds}} does intermediate rounding, which Praat does not. If rescored, you would have earned an estimated \textbf{\pasciolyEstimate} out of 41 on the pitch score and bonus.
+% Simulation of 20000 trials: 
+% average: -0.174856135652284 cents
+% sample standard deviation: 2.157736014805369 cents
+
+\item On the PA SciOly web applet (\scalebox{1.1}{\texttt{pascioly.org/sounds}}), if the audio goes through only one compression, such as at a tournament conducted in person, or a virtual tournament where your instrument's sound doesn't need to pass through any speakers for grading, then the average frequency reading of a pitch is $4.16$ cents lower than that on Praat.  If the audio goes through three compressions (through your microphone, then the event supervisor's speaker, and finally the event supervisor's speaker), then the average frequency of a pitch is $3.48$ cents lower.
+
+Additionally, the PA SciOly web applet requires intermediate rounding of cent values, which I didn't do. If rescored, you would have earned an estimated \textbf{\pasciolyEstimate} out of 41 with a single compression, and \textbf{\pasciolyEstimateTC} out of 41 with three compressions. However, fluctuations up to 70 cents in size can occur for a single note because the web app is extremely self-inconsistent.
 \end{itemize}
 These scores are estimates, and you may find something completely different when you measure using other software. Factors like background noise or Internet speed can also impact your score.
 
