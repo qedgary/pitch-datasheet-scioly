@@ -133,8 +133,9 @@
 \def\pasciolyEstimateTC{123}
 
 
-
-
+\typein[\TypeAnythingToProceed]{Great, you're almost there! Before you compile the document, did you remember to change the team name from ``Example X. Ampleson'' to something else? (type anything to proceed)}
+\typein[\TypeAnythingToProceed]{Did you remember to give personalized feedback? (type anything to proceed)}
+\typein[\TypeAnythingToProceed]{Did you remember to score the log and song? Futhermore, did you remember to add up the PS, LS, SS, and Bonus manually in the totalScore command? (type anything to proceed)}
 
 
 \begin{document}
@@ -270,7 +271,9 @@ The sum of your pitch score and your bonus note score is \textbf{\pitchScore} ou
 
 After I scored your instrument, I put your data into a computer program, which automatically generated this report. Obviously, generic reports aren't everybody's cup of tea, so here's my personalized feedback just for your instrument. %(Sometimes no feedback is good feedback, because it means you didn't do anything wrong. Or I got lazy lol. One of those two.)
 
+\hspace{0.5mm}\begin{tabular}{!{\color{hyblue!50}\vrule width 3pt}p{\textwidth-3.8mm}}\setlength{\parskip}{8pt}
 {\feedback}
+\end{tabular}
 
 \section{How will your regional or state tournament be different?}
 
@@ -285,7 +288,7 @@ $ cents lower than that on Praat. If rescored, you would have earned an estimate
 % average: -0.174856135652284 cents
 % sample standard deviation: 2.157736014805369 cents
 
-\item On the PA SciOly web applet (\scalebox{1.1}{\texttt{pascioly.org/sounds}}), if the audio goes through only one compression, such as at a tournament conducted in person, or a virtual tournament where your instrument's sound doesn't need to pass through any loudspeakers for grading, then the average frequency reading of a pitch is $4.16$ cents lower than that on Praat.  If the audio goes through three compressions (through your microphone, then the event supervisor's loudspeaker, and finally the event supervisor's speaker), then the average frequency of a pitch is $3.48$ cents lower. These values were measured on a typical laptop manufactured in 2018. % Dell Inspiron 7570, non-gaming laptop
+\item On the PA SciOly web applet (\scalebox{1.1}{\texttt{pascioly.org/sounds}}), if the audio goes through only one compression, such as at a tournament conducted in person, or a virtual tournament where your instrument's sound doesn't need to pass through any loudspeakers for grading, then the average frequency reading of a pitch is $4.16$ cents lower than that on Praat.  If the audio goes through three compressions (through your microphone, then the event supervisor's loudspeaker, and finally the event supervisor's speaker), then the average frequency of a pitch is $3.48$ cents lower. These values were measured on a Dell Inspiron 7570 made in 2018. %, non-gaming laptop
 
 Additionally, the PA SciOly web applet requires intermediate rounding of cent values, which I didn't do. If rescored, you would have earned an estimated \textbf{\pasciolyEstimate} out of 41 with a single compression, and \textbf{\pasciolyEstimateTC} out of 41 with three compressions. However, fluctuations up to 70 cents in size can occur for a single note because the web app is extremely self-inconsistent.
 \end{itemize}
