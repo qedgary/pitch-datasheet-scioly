@@ -176,26 +176,30 @@ public class datasheetGenerator{
       double meanErrorPAscioly = -4.155381354;
       double meanErrorPAsciolyTripleC = -3.47874315393969;
 
+      /* old version that gives the wrong score
       for (double centsOff : centsArray){
          if(centsOff != Double.MAX_VALUE){
             pitchScore += Note.getIPS(centsOff, "invitational");
-            // change "invitational" to "invy" if you prefer to spell it that way, or to "states" or "nationals"
          }
-      }
-      for (double centsOff : centsArray){
-         if(centsOff != Double.MAX_VALUE){
-            audacityEstimate += Note.getIPS(centsOff + meanErrorAudacity, "invitational");
-         }
-      }
-      for (double centsOff : centsArray){
-         if(centsOff != Double.MAX_VALUE){
-            pasciolyEstimate += Note.getIPS(Math.round(centsOff + meanErrorPAscioly), "invitational");
-            // Math.round accounts for the fact that intermediate rounding is necessary for pascioly.org/sounds
-         }
-      }
-      for (double centsOff : centsArray){
-         if(centsOff != Double.MAX_VALUE){
-            pasciolyEstimateTripleC += Note.getIPS(Math.round(centsOff + meanErrorPAsciolyTripleC), "invitational");
+      }*/
+      for (int k = 0; k < centsArray.length; k++){ // let's go through our list of cent values
+         double centsOff = centsArray[k];
+         if(centsOff != Double.MAX_VALUE){ // if it's not a skipped note
+            if ( k != centsArray.length - 1 ){
+               pitchScore              += Note.getIPS(centsOff, "invitational");
+               audacityEstimate        += Note.getIPS(centsOff + meanErrorAudacity, "invitational");
+               pasciolyEstimate        += Note.getIPS(Math.round(centsOff + meanErrorPAscioly), "invitational");
+               pasciolyEstimateTripleC += Note.getIPS(Math.round(centsOff + meanErrorPAsciolyTripleC), "invitational");
+               // Math.round accounts for the fact that intermediate rounding is necessary for pascioly.org/sounds
+            }
+            else { // bonus note
+               pitchScore              += Note.getBonus(centsOff, "invitational");
+               audacityEstimate        += Note.getBonus(centsOff + meanErrorAudacity, "invitational");
+               pasciolyEstimate        += Note.getBonus(Math.round(centsOff + meanErrorPAscioly), "invitational");
+               pasciolyEstimateTripleC += Note.getBonus(Math.round(centsOff + meanErrorPAsciolyTripleC), "invitational");
+            } 
+
+            // change "invitational" to "invy" if you prefer to spell it that way, or to "states" or "nationals" or "nattys"
          }
       }
 

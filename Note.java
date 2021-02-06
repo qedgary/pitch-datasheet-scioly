@@ -121,4 +121,20 @@ public class Note {
       }
       return ips;
    }
+
+   public static double getBonus(double centsOff, String level){
+      level = level.substring(0,1).toLowerCase();
+      centsOff = Math.abs(centsOff);
+      double bonus = 0;
+      if (level.equals("r") || level.equals("i")){
+         if (centsOff <= 10) { bonus = 5; }
+      }
+      else if (level.equals("s")){
+         if (centsOff <= 7) { bonus = 5; }
+      }
+      else if (level.equals("n")) {
+         if (centsOff <= 3) { bonus = 5; }
+      }
+      return bonus;
+   }
 }
